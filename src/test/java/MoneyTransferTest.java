@@ -2,16 +2,13 @@ import api.PaymentRemitInfoModel;
 import api.RequestObject;
 import api.ResponseObject;
 import api.TransferEndpoint;
-import kong.unirest.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 public class MoneyTransferTest {
@@ -118,24 +115,6 @@ public class MoneyTransferTest {
         System.out.println("Step4 passed");
         Assert.assertTrue(responseObject.getTotalCharge()>0);
         System.out.println("Step5 passed");
-    }
-
-    @Test()
-    public void toBankAccounts1(){
-        RequestObject requestObject = new RequestObject(
-                "CIV",
-                "Account",
-                "100",
-                "1"
-        );
-        ResponseObject responseObject = transferEndpoint.getRemittanceChargeRate(requestObject.getRequestModel());
-        softAssert.assertEquals(responseObject.getCode(),200);
-        softAssert.assertFalse(responseObject.isBeneficiaryFieldsEmpty());
-        softAssert.assertTrue(responseObject.getDestinationAmount()>0);
-        softAssert.assertTrue(responseObject.getRate()>0);
-        softAssert.assertTrue(responseObject.getTotalCharge()>0);
-        softAssert.assertTrue(responseObject.isPointsValid());
-        softAssert.assertAll();
     }
 
 }

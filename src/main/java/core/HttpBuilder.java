@@ -1,8 +1,6 @@
 package core;
 
 import kong.unirest.*;
-import kong.unirest.json.JSONObject;
-
 import java.util.HashMap;
 
 public class HttpBuilder {
