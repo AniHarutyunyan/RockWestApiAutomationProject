@@ -1,0 +1,1 @@
+{"uuid":"23dd80cb-92b4-46bb-8662-1b51d56d3c6d","name":"MoneyTransferTest","children":["450e085c-01f2-46b1-ab1b-3d034f84c733"],"befores":[{"name":"beforeClass","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1607452953369,"stop":1607452953401}],"afters":[],"links":[],"start":1607452953302,"stop":1607452953729}
