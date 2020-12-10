@@ -20,7 +20,7 @@ public class MoneyTransferTest {
     @DataProvider()
     public Object[][] dpCountriesAndLevels(){
         //Countries are received from payment-remit-info
-        paymentRemitInfoModel = transferEndpoint.getRemitInfoModel(new HashMap());
+        paymentRemitInfoModel = transferEndpoint.getPaymentRemitInfo(new HashMap());
         List<String> countries = paymentRemitInfoModel.getCountry();
         String[] serviceArr = {"1","2","3"};
         Object[][] returnCountries = new Object[countries.size()*serviceArr.length][2];
@@ -60,7 +60,7 @@ public class MoneyTransferTest {
         requestObject.requestPrettyPrint();
 
         ///Receiving response model and setting it to response object
-        ResponseObject responseObject = transferEndpoint.getRemittanceChargeRate(requestObject.getRequestModel());
+        ResponseObject responseObject = transferEndpoint.getRemittanceInfoForCountry(requestObject.getRequestModel());
 
         ///Assertions are done step by step, if any of steps is failed will be run the next test case
         Assert.assertEquals(responseObject.getCode(),200);
@@ -86,7 +86,7 @@ public class MoneyTransferTest {
                 serviceLevel
         );
         requestObject.requestPrettyPrint();
-        ResponseObject responseObject = transferEndpoint.getRemittanceChargeRate(requestObject.getRequestModel());
+        ResponseObject responseObject = transferEndpoint.getRemittanceInfoForCountry(requestObject.getRequestModel());
         Assert.assertEquals(responseObject.getCode(),200);
         System.out.println("Step1 passed");
         Assert.assertFalse(responseObject.isBeneficiaryFieldsEmpty());
@@ -110,7 +110,7 @@ public class MoneyTransferTest {
                 serviceLevel
         );
         requestObject.requestPrettyPrint();
-        ResponseObject responseObject = transferEndpoint.getRemittanceChargeRate(requestObject.getRequestModel());
+        ResponseObject responseObject = transferEndpoint.getRemittanceInfoForCountry(requestObject.getRequestModel());
         Assert.assertEquals(responseObject.getCode(),200);
         System.out.println("Step1 passed");
         Assert.assertFalse(responseObject.isBeneficiaryFieldsEmpty());
